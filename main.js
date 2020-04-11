@@ -19,6 +19,8 @@ module.exports.loop = function () {
             tower.repair(closestDamagedStructure);
         }
     }
+
+    
     
 
     for(var name in Memory.creeps) {
