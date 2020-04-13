@@ -19,6 +19,9 @@ var roleBuilder = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
+            else {
+                creep.memory.role = 'unused';
+            }
 	    }
 	    else {
 	        var sources = creep.room.find(FIND_SOURCES);
