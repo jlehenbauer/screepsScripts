@@ -269,11 +269,16 @@ module.exports.loop = function () {
     
     /** Make more builders **/
     else if(totalEnergy >= reqEnergy 
-            && builders.length < buildermax
-            && Game.spawns['Spawn1'].room.find(FIND_CONSTRUCTION_SITES).length > 0
-            && !nobuild){
-        var newName = Game.spawns['Spawn1'].createCreep(nowcreep, undefined, {role: 'builder'});
-        console.log('Spawning new builder: ' + newName);
+        && builders.length < buildermax
+        && (Game.spawns['Spawn1'].room.find(FIND_CONSTRUCTION_SITES).length > 0 
+            || Game.spawns['Spawn1'].room.find(FIND_STRUCTURES, {
+               filter: (site) => {
+                    return (site.hits < site.hitsMax / 2)
+                }
+            }).length > 0)
+        && !nobuild){
+            var newName = Game.spawns['Spawn1'].createCreep(nowcreep, undefined, {role: 'builder'});
+            console.log('Spawning new builder: ' + newName);
     }
 
     
