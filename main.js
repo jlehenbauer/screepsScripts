@@ -273,7 +273,7 @@ module.exports.loop = function () {
         && (Game.spawns['Spawn1'].room.find(FIND_CONSTRUCTION_SITES).length > 0 
             || Game.spawns['Spawn1'].room.find(FIND_STRUCTURES, {
                filter: (site) => {
-                    return (site.hits < site.hitsMax / 2)
+                    return (site != STRUCTURE_WALL && site.hits < site.hitsMax / 2)
                 }
             }).length > 0)
         && !nobuild){
